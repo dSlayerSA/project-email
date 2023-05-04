@@ -54,7 +54,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Para preencher o espaço da div */
 }
 </style>
   

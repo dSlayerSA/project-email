@@ -16,7 +16,7 @@
               <div class="custom-container">
                 <v-text-field id="email" color="white" class="custom-text-field" placeholder="Informe seu email" required></v-text-field>
               </div>
-              <v-btn class="main-custom-btn">Inscrever-se</v-btn>
+              <v-btn class="main-custom-btn" @click="submitForm">Inscrever-se</v-btn>
               <div>
                 <img src="@/assets/main-midia-info.svg" class="main-midia-info" />
               </div>
@@ -43,5 +43,29 @@
 
   <style src="../styles/mainStyle.vue"></style>
 
-<script>
-</script>
+  <script>
+  import axios from 'axios';
+  
+  export default {
+    data() {
+      return {
+        name: '',
+        email: ''
+      }
+    },
+    methods: {
+      submitForm() {
+        axios.post('/api/subscription', {
+          name: this.name,
+          email: this.email
+        })
+        .then(response => {
+          console.log(response.data.id);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      }
+    }
+  }
+  </script>

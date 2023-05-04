@@ -30,7 +30,12 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $subscription = new Subscription;
+        $subscription->nome = $request->name;
+        $subscription->email = $request->email;
+        $subscription->save();
+
+        return response()->json(['id' => $subscription->id]);
     }
 
     /**

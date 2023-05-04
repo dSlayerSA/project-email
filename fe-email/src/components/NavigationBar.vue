@@ -11,7 +11,7 @@
 
 <style>
 .logo-nav {
-  padding-top: 30px;
+  padding-top: 20px;
   padding-left: 90px;
   pointer-events: none;
 
@@ -21,7 +21,7 @@
   width: 119px;
   height: 42px;
   padding-right: 30px;
-  margin-top: 49px;
+  margin-top: 30px;
 }
 
 .title-nav {
@@ -32,7 +32,7 @@
   letter-spacing: 0em;
   text-align: left;
   padding-right: 10px;
-  padding-top: 49px;
+  padding-top: 30px;
 }
 
 </style>

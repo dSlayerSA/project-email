@@ -9,39 +9,12 @@
   </v-app-bar>
 </template>
 
-<style>
-.logo-nav {
-  padding-top: 20px;
-  padding-left: 90px;
-  pointer-events: none;
-
-}
-
-.btn-custom-nav {
-  width: 119px;
-  height: 42px;
-  padding-right: 30px;
-  margin-top: 30px;
-}
-
-.title-nav {
-  font-family: Plus Jakarta Sans;
-  font-size: 15px;
-  font-weight: 600;
-  line-height: 19px;
-  letter-spacing: 0em;
-  text-align: left;
-  padding-right: 10px;
-  padding-top: 30px;
-}
-
-</style>
+<style src="../styles/navStyle.vue"></style>
 
 <script>
 export default {
-  methods: {
+  methods: { 
     comecar() {
-      // Implemente aqui a ação do botão "Começar"
     }
   }
 }

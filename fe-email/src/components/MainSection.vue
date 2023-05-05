@@ -61,11 +61,6 @@ export default {
 
         };
     },
-    computed: {
-        isFormValid() {
-            return this.name && this.email;
-        }
-    },
     watch: {
         name() {
             this.validateForm()
@@ -84,6 +79,9 @@ export default {
                     console.log(response.data.id);
                     this.status = 'success';
                     this.errorMessage = '';
+                    this.resetForm();
+
+
                 })
                 .catch(error => {
                     console.log(error);
@@ -97,6 +95,13 @@ export default {
         },
         validateForm() {
             this.formValid = this.name && this.email
+        },
+        resetForm() {
+            this.name = '';
+            this.email = '';
+            this.status = '';
+            this.formValid = false;
+            this.errorMessage = '';
         }
     }
 }

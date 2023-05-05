@@ -9,6 +9,7 @@ use App\Models\Subscription;
 class SubscriptionController extends Controller
 {
    
+    
     public function index()
     {
         $subscription = Subscription::all();
@@ -30,13 +31,20 @@ class SubscriptionController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:subscriptions,email|max:255',
+        ]);
+        
         $subscription = new Subscription;
-        $subscription->nome = $request->name;
-        $subscription->email = $request->email;
+        $subscription->name = $validator['name'];
+        $subscription->email = $validator['email'];
         $subscription->save();
-
+        
+        
         return response()->json(['id' => $subscription->id]);
     }
+
 
     /**
      * Display the specified resource.

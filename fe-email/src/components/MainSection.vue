@@ -19,7 +19,7 @@
                             <v-text-field v-model="email" id="email" color="white" class="custom-text-field"
                                 placeholder="Informe seu email" required></v-text-field>
                         </div>
-                        <v-btn class="main-custom-btn" @click="submitForm">Inscrever-se</v-btn>
+                        <v-btn id="main-btn" class="main-custom-btn" :disabled="!formValid" @click="submitForm" >Inscrever-se</v-btn>
                         <div>
                             <img src="@/assets/main-midia-info.svg" class="main-midia-info" />
                         </div>
@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div v-if="status === 'success'" class="success-message">Inscrição realizada com sucesso!</div>
-               
+
             </v-col>
         </v-row>
     </v-container>
@@ -56,8 +56,23 @@ export default {
         return {
             name: '',
             email: '',
-            status: ''
+            status: '',
+            formValid: false
+
         };
+    },
+    computed: {
+        isFormValid() {
+            return this.name && this.email;
+        }
+    },
+    watch: {
+        name() {
+            this.validateForm()
+        },
+        email() {
+            this.validateForm()
+        }
     },
     methods: {
         submitForm() {
@@ -79,6 +94,9 @@ export default {
                     }
                     this.status = 'error';
                 });
+        },
+        validateForm() {
+            this.formValid = this.name && this.email
         }
     }
 }

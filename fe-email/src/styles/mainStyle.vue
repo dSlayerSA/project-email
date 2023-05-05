@@ -75,6 +75,16 @@
     cursor: pointer;
     margin-top: 15px;
     margin-left: 235px;
+    opacity: 1;
+}
+
+#main-btn:disabled {
+    pointer-events: none !important;
+    visibility: visible !important;
+    background-color: #A9A9A9 !important;
+    color: #000 !important;
+
+
 }
 
 .custom-text-field {

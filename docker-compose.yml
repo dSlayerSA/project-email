@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+
+  app:
+    image: dslayersa/be-email-app:latest
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_DATABASE: subscribers
+      DB_USERNAME: root
+      DB_PASSWORD: root
+      APP_DEBUG: "true"
+    depends_on:
+      - db
+
+  db:
+    image: dslayersa/mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: subscribers
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+  nginx:
+    image: dslayersa/fe-email-app:latest
+    ports:
+      - "8081:80"
+volumes:
+  db_data:

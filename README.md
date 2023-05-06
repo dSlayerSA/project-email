@@ -15,5 +15,15 @@ front-ending
 04/may-22h
 Request POST criado, verificação de email já existente configurado.
 
-05/may-22h
+05/may-11h*
+-Botão inscrever só habilita se campos estiverem preenchidos.
+-FormReset caso subscribe = success
+-GET já criado.
 
+05/may-22h
+-Mailer feito.
+-APIs funcionando.
+-iniciando dockerfiles
+
+23h
+-configurei mailer com receptor apenas... Arrumar.

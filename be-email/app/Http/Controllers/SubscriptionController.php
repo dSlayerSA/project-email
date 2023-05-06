@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subscription;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class SubscriptionController extends Controller
 {
-   
-    
+
     public function index()
     {
         $subscription = Subscription::all();
@@ -17,7 +18,7 @@ class SubscriptionController extends Controller
         return response()->json($subscription);
 
     }
-    
+
     public function create()
     {
         //
@@ -30,17 +31,20 @@ class SubscriptionController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:subscriptions,email|max:255',
         ]);
-        
+
         $subscription = new Subscription;
         $subscription->name = $validator['name'];
         $subscription->email = $validator['email'];
         $subscription->save();
-        
-        
-        return response()->json(['id' => $subscription->id]);
+
+        return response()->json([
+            'id' => $subscription->id,
+            'name' => $subscription->name,
+            'email' => $subscription->email
+        ]);
     }
 
-
+  
     /**
      * Display the specified resource.
      *

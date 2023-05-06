@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/subscription/store', 'App\Http\Controllers\SubscriptionController@store');
 
 Route::get('/subscription', 'App\Http\Controllers\SubscriptionController@index');
+
+Route::post('/subscription/sendEmail', 'App\Http\Controllers\EmailController@sendEmail');

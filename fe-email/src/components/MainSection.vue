@@ -19,7 +19,8 @@
                             <v-text-field v-model="email" id="email" color="white" class="custom-text-field"
                                 placeholder="Informe seu email" required></v-text-field>
                         </div>
-                        <v-btn id="main-btn" class="main-custom-btn" :disabled="!formValid" @click="submitForm" >Inscrever-se</v-btn>
+                        <v-btn id="main-btn" class="main-custom-btn" :disabled="!formValid"
+                            @click="submitForm">Inscrever-se</v-btn>
                         <div>
                             <img src="@/assets/main-midia-info.svg" class="main-midia-info" />
                         </div>
@@ -81,7 +82,18 @@ export default {
                     this.errorMessage = '';
                     this.resetForm();
 
-
+                    // Envio de e-mail
+                    axios.post('http://localhost:8000/api/subscription/sendEmail', {
+                        id: response.data.id,
+                        name: response.data.name,
+                        email: response.data.email
+                    })
+                        .then(response => {
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
                 })
                 .catch(error => {
                     console.log(error);
